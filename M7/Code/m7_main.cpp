@@ -1,23 +1,10 @@
-#include "inc/gpio.h"
-
-using namespace gpio;
-
-static pinDef m7_led = { .port = GPIOE, .pin = PIN_1, .mode = Output, .type = PushPull, .speed = Low, .pull = None, .alternate = AF0 };
-
+#include "sys/system.h"
 
 int main(void)
 {
-	int i = 0;
+	sys::m7_init();
 	
-	configurePin(m7_led);
-	
-	while (1)
-	{
-		++i;
-		if (i > 1000000)
-		{
-			i = 0;
-			toggle(m7_led);
-		}
+	while (1) {
+		sys::m7_update();
 	}
 }
