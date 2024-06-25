@@ -1,4 +1,4 @@
-#include "../inc/gpio.h"
+#include "inc/gpio.h"
 
 void gpio::configurePin(pinDef pin)
 {
