@@ -2,9 +2,9 @@
 
 int main(void)
 {
-	sys::m7_init();
+	sys7::m7_init();
 	
 	while (1) {
-		sys::m7_update();
+		sys7::m7_update();
 	}
 }
