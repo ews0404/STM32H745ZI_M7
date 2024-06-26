@@ -47,9 +47,6 @@
     <ClCompile Include="Code\sys\system.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\sys\src\gpio.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <LinkerScript Include="Code\m7_STM32H745ZI_flash.lds" />
@@ -80,9 +77,6 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="Code\sys\system.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\sys\inc\gpio.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

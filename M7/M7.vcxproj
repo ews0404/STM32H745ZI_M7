@@ -27,6 +27,7 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="Shared">
+    <Import Project="..\..\M4\Common\Common.vcxitems" Label="Shared" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
@@ -65,7 +66,6 @@
   <ItemGroup>
     <ClCompile Include="Code\m7_main.cpp" />
     <ClCompile Include="Code\m7_startup_stm32h745xx.c" />
-    <ClCompile Include="Code\sys\src\gpio.cpp" />
     <ClCompile Include="Code\sys\system.cpp" />
     <None Include="stm32.props" />
     <None Include="M7-Debug.vgdbsettings" />
@@ -73,15 +73,6 @@
     <None Include="stm32.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Code\sys\inc\cmsis_gcc.h" />
-    <ClInclude Include="Code\sys\inc\core_cm4.h" />
-    <ClInclude Include="Code\sys\inc\core_cm7.h" />
-    <ClInclude Include="Code\sys\inc\core_cmFunc.h" />
-    <ClInclude Include="Code\sys\inc\core_cmInstr.h" />
-    <ClInclude Include="Code\sys\inc\core_cmSimd.h" />
-    <ClInclude Include="Code\sys\inc\gpio.h" />
-    <ClInclude Include="Code\sys\inc\stm32h745xx.h" />
-    <ClInclude Include="Code\sys\inc\stm32h7xx.h" />
     <ClInclude Include="Code\sys\system.h" />
   </ItemGroup>
 </Project>

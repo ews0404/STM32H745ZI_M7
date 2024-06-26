@@ -1,6 +1,6 @@
 #include <limits.h>
 #include "system.h"
-#include "inc/gpio.h"
+#include "../Common/inc/gpio.h"
 #include "inc/stm32h7xx.h"
 
 using namespace gpio;
