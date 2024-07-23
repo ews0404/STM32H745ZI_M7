@@ -9,6 +9,8 @@ namespace sys7
 	
 	uint32_t getMillis(void);
 	uint32_t getMillisSince(uint32_t oldMillis);
+	
+	void printDebug(const char* message);
 }
 
 

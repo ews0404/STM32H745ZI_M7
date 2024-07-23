@@ -1,14 +1,19 @@
 #include <limits.h>
+#include <cstring>
 #include "system.h"
 #include "../Common/inc/gpio.h"
+#include "../Common/inc/messageQueue.h"
 #include "inc/stm32h7xx.h"
+#include "inc/m7_messageProcessor.h"
+#include "../Common/inc/messageID.h"
 
 using namespace gpio;
+namespace mq=messageQueue;
 
 static pinDef m7_led = { .port = GPIOE, .pin = PIN_1, .mode = Output, .type = PushPull, .speed = Low, .pull = None, .alternate = AF0 };
 static uint32_t m7_systick_milliseconds;
 static uint32_t m7_led_millis;
-
+static uint32_t timestamp_millis;
 
 static void m7_led_init(void);
 static void m7_led_update(void);
@@ -30,6 +35,7 @@ void sys7::m7_init(void)
 	m7_nvic_init();
 	m7_fpu_init();
 	m7_systick_init();
+	m7_messageProcessor::init();
 	
 	// start the M4 again, now both cores are running
 	startM4();
@@ -38,6 +44,7 @@ void sys7::m7_init(void)
 void sys7::m7_update(void)
 {
 	m7_led_update();
+	m7_messageProcessor::update();
 }
 
 
@@ -54,6 +61,8 @@ void m7_led_update(void)
 	if (sys7::getMillisSince(m7_led_millis) > M7_LED_MILLIS) { 
 		m7_led_millis = sys7::getMillis();
 		toggle(m7_led); 
+		
+		digitalRead(m7_led) ? sys7::printDebug("ON!") : sys7::printDebug("OFF!");
 	}
 }
 
@@ -117,4 +126,13 @@ uint32_t sys7::getMillisSince(uint32_t oldMillis)
 	// if milliseconds < oldMillis the milliseconds counter overflowed and we can handle that happening one time,
 	// each overflow takes ~49.7 days 
 	return (m7_systick_milliseconds >= oldMillis) ? (m7_systick_milliseconds - oldMillis) : (UINT_MAX - oldMillis + m7_systick_milliseconds + 1);
+}
+
+
+void sys7::printDebug(const char* message)
+{
+	// send message string to M4 processor where it will get sent out of the debug port
+	#ifdef DEBUG
+		m7_messageProcessor::print_mq(message);
+	#endif // DEBUG
 }

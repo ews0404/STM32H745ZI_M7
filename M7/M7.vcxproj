@@ -33,17 +33,17 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <GNUConfigurationType>Debug</GNUConfigurationType>
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
+    <ToolchainVersion>13.3.1/14.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
+    <ToolchainVersion>13.3.1/14.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../../M4;Code/sys/inc;../..;../../M4/Common;Code/sys;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\stiers\source\repos\STM32H745_Dual_Core\M4\Common\;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
@@ -66,6 +66,7 @@
   <ItemGroup>
     <ClCompile Include="Code\m7_main.cpp" />
     <ClCompile Include="Code\m7_startup_stm32h745xx.c" />
+    <ClCompile Include="Code\sys\src\m7_messageProcessor.cpp" />
     <ClCompile Include="Code\sys\system.cpp" />
     <None Include="stm32.props" />
     <None Include="M7-Debug.vgdbsettings" />
@@ -73,6 +74,7 @@
     <None Include="stm32.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\sys\inc\m7_messageProcessor.h" />
     <ClInclude Include="Code\sys\system.h" />
   </ItemGroup>
 </Project>

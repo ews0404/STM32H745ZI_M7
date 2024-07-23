@@ -11,9 +11,12 @@ MEMORY
 	DTCMRAM (RWX) : ORIGIN = 0x20000000, LENGTH = 128K
 	ITCMRAM (RWX) : ORIGIN = 0x00000000, LENGTH = 64K
 	RAM_D1 (RWX)  : ORIGIN = 0x24000000, LENGTH = 512K
+	SRAM4 (RWX)  : ORIGIN = 0x38000000, LENGTH = 32K
+	SRAM4_MQ (RWX)  : ORIGIN = 0x38008000, LENGTH = 32K  /* reserve half of SRAM4 for message queue */
 }
 
-_estack = 0x20020000;
+_estack = ORIGIN(DTCMRAM) + LENGTH(DTCMRAM); /* 0x20020000; */
+_sram4_mq = ORIGIN(SRAM4_MQ);
 
 SECTIONS
 {
@@ -39,7 +42,6 @@ SECTIONS
 		KEEP(*(.fini))
 		. = ALIGN(4);
 		_etext = .;
-
 	} > FLASH
 
 	.ARM.extab :
