@@ -5,5 +5,3 @@ This project aims to bring up the M7 core of a STM32H745ZI dual core microcontro
 This project references the Common project in the M4 repo for code that is used by both M7 and M4 cores.
 
 Toolchain is Visual Studio with the VisualGDB plugin for talking to the microcontroller. The target hardware is a Nucleo-H645ZI-Q development board.
-
-This is also my first time using GitHub, so that will be a fun learning process too.
